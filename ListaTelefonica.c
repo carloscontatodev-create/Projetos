@@ -11,11 +11,14 @@ typedef struct{
 
 void cadastrarContato(){
     ListaTelefonica novoContato;
+    printf("\n");
     printf("** Cadastre um novo contato **\n");
+    printf("\n");
 
     FILE *arquivo = fopen("arquivo.txt", "a");
     if (arquivo == NULL){
         printf("Contato não encontrado!\n");
+        printf("\n");
         return;
     }
 
@@ -39,6 +42,7 @@ void cadastrarContato(){
 
     fclose (arquivo);
     printf("Cadastro efetivado com sucesso! \n");
+    printf("\n");
 }
 
 void pesquisarCOntato(){
@@ -68,6 +72,7 @@ void pesquisarCOntato(){
     }
     if (bandeira == 0){
         printf("Contato nao encontrado!");
+        printf("\n");
     }
 
     fclose(arquivo);
@@ -80,6 +85,7 @@ void editarContato(){
 
     if (arquivo == NULL){
         printf("Contato nao encontrado!");
+        printf("\n");
         if (arquivoTemp == NULL) fclose(arquivo);
         return;
     }
@@ -111,12 +117,14 @@ void editarContato(){
             scanf("%d", &contatotemp.telefone);
             while (getchar() != '\n');
 
-            printf("Digite o novo tipo de contato: \n");
+            printf("Pessoal.\nTrabalho.\nFamilia.\nCliente.\nOutro.\nDigite o tipo do contato: \n");
+            printf("\n");
             fgets(contatotemp.tipoContato, 50, stdin);
             contatotemp.tipoContato[strcspn(contatotemp.tipoContato, "\n")] = '\0';
 
             fprintf(arquivoTemp, "%s;%s;%d;%s\n", contatotemp.nomeContato, contatotemp.email, contatotemp.telefone, contatotemp.tipoContato);
             printf("Contato atualizado com sucesso!\n");
+            printf("\n");
         }
         else{
             fprintf(arquivoTemp, "%s;%s;%d;%s\n", contatotemp.nomeContato, contatotemp.email, contatotemp.telefone, contatotemp.tipoContato);
@@ -132,6 +140,7 @@ void editarContato(){
     }
     else {
         printf("Contato nao encontrado!\n");
+        printf("\n");
         remove ("arquivotemp.txt");
     }
 }
@@ -142,6 +151,7 @@ void apagarContato(){
 
     if (arquivo == NULL){
         printf("Contato nao encontrado!");
+        printf("\n");
         if (arquivoTemp == NULL) fclose(arquivo);
         return;
     }
@@ -161,6 +171,7 @@ void apagarContato(){
         if (strcmp(contatotemp.nomeContato, buscarContato) == 0){
             bandeira = 1;
             printf("O contato foi apagado com sucesso!\n");
+            printf("\n");
         }
         else{
             fprintf(arquivoTemp, "%s;%s;%d;%s\n", contatotemp.nomeContato, contatotemp.email, contatotemp.telefone, contatotemp.tipoContato);
@@ -176,6 +187,7 @@ void apagarContato(){
     }
     else {
         printf("Contato nao encontrado!\n");
+        printf("\n");
         remove ("arquivotemp.txt");
     }
 }
@@ -185,6 +197,7 @@ void listarContatos(){
     FILE *arquivo = fopen("arquivo.txt", "r");
     if (arquivo == NULL){
         printf("Contato nao encontrado!\n");
+        printf("\n");
         return;
     }
 
@@ -205,9 +218,11 @@ void listarContatos(){
 
     if(contador==0){
         printf("A lista esta vazio no momento!\n");
+        printf("\n");
     }
     else{
         printf("Há um total de %d contatos salvos.\n", contador);
+        printf("\n");
     }
 
     fclose(arquivo);
@@ -219,6 +234,7 @@ int main(){
     int opcao;
 
     printf("--- Bem vindo a Lista Telefonica ---\n");
+    printf("\n");
     printf("Digite a opcao desejada.\n");
 
 
