@@ -234,5 +234,6 @@ int main(){
     if (opcao == 6){printf("Obrigado!\n");}
     } while (opcao != 6);
 
+    system("pause");
     return 0;
 }
